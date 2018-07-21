@@ -1,5 +1,5 @@
 from Imdb import Imdb
-
+import ColorUtils
 
 from plotly import __version__
 import plotly.graph_objs as go
@@ -33,7 +33,7 @@ def main():
             titlefont=dict(
                 family='Courier New, monospace',
                 size=18,
-                color='#7f7f7f'
+                color=ColorUtils.getRandomColor()
             )
         ),
         yaxis=dict(

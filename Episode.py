@@ -1,10 +1,12 @@
 class Episode:
+
     def __init__(self, id, title, season, number, rating):
         self.season = season
         self.title = title
         self.number = number
         self.id = id
         self.rating = rating
+        self.rawNumber = -1
 
     def __repr__(self):
         return str(self.__dict__)
