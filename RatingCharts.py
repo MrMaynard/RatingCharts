@@ -8,25 +8,11 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 from numpy import arange,array,ones
 from scipy import stats
 
-# todo name traces
-# todo details on mouseover
 # todo rest api
 
-def main():
-    imdb = Imdb()
+
+def buildChart(title, episodes, scale):
     seedColor = (60, 130, 220)
-
-    # get title:
-    title = input("title>").strip()
-    print(title)
-
-    # todo get options:
-    scale = False
-
-    # get all episodes for this title:
-    id = imdb.title2Id(title)
-    episodes = imdb.id2Episodes(id)
-    episodes = sorted(episodes)
 
     # separate into seasons:
     i = 1
@@ -94,7 +80,7 @@ def main():
         ),
         yaxis=dict(
             title='Score',
-            range = [minY, maxY],
+            range=[minY, maxY],
             titlefont=dict(
                 family='Courier New, monospace',
                 size=18,
@@ -105,6 +91,31 @@ def main():
     fig = go.Figure(data=trace, layout=layout)
     # iplot(fig)
     plot(fig, filename='output.html')
+
+def getEpisodes(site, title):
+    id, trueTitle = site.resolveTitle(title)
+    episodes = site.getEpisodes(id)
+    return (trueTitle, sorted(episodes))
+
+def main():
+    # get title:
+    title = input("title>").strip()
+    print(title)
+
+    # todo get options:
+    scale = False
+
+    # get episodes:
+    try:
+        trueTitle, episodes = getEpisodes(Imdb(), title)
+        # build chart
+        try:
+            buildChart(trueTitle, episodes, scale)
+        except:
+            print("Unable to build chart for \"" + title + "\"")
+    except:
+        print("Unable to scrape episode data for \"" + title + "\"")
+
 
 
 if __name__ == "__main__":
