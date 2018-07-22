@@ -47,7 +47,7 @@ class Imdb(RatingSite):
 
                     #get rating:
                     workingContent = workingContent[workingContent.find(Imdb.ratingTag) + len(Imdb.ratingTag):]
-                    rating = workingContent[:workingContent.find("<")]
+                    rating = float(workingContent[:workingContent.find("<")])
 
                     #append to list:
                     episodes.append(Episode(episode, title, season, i, rating))

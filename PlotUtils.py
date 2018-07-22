@@ -9,6 +9,6 @@ def getRandomColor(r, g, b):
     blue = (blue + b) / 2
     return (red, green, blue)
 
-def toPlotlyString(r, g, b):
-    return 'rgba({}, {}, {}, .9)'.format(r, g, b)
+def color2PlotlyString(t, a):
+    return 'rgba({}, {}, {}, {})'.format(t[0], t[1], t[2], a)
 
