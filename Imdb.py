@@ -23,7 +23,6 @@ class Imdb(RatingSite):
         resultsStart = content[content.find("result_text"):]
         idStart = resultsStart[resultsStart.find("/title/"):]
         id = idStart[:idStart.find("?ref")]
-        print("I think the ID is " + id)
         return id
 
     def id2Episodes(self, id):

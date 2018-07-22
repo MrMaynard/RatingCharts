@@ -8,6 +8,10 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 from numpy import arange,array,ones
 from scipy import stats
 
+# todo name traces
+# todo details on mouseover
+# todo rest api
+
 def main():
     imdb = Imdb()
     seedColor = (60, 130, 220)
@@ -17,7 +21,7 @@ def main():
     print(title)
 
     # todo get options:
-    scale = True
+    scale = False
 
     # get all episodes for this title:
     id = imdb.title2Id(title)
@@ -35,18 +39,19 @@ def main():
         i += 1
 
     # create color list:
-    colors = []
-    for season in episodesBySeason:
-        colors.append(PlotUtils.getRandomColor(seedColor[0], seedColor[1], seedColor[2]))
+    colors = [PlotUtils.getRandomColor(seedColor[0], seedColor[1], seedColor[2])]
+    for i in range(len(episodesBySeason)):
+        colors.append(PlotUtils.getRandomColor(colors[i][0], colors[i][1], colors[i][2]))
 
     # create a trace for each season:
     trace = []
     for season in episodesBySeason:
-        print(season)
         seedColor = PlotUtils.getRandomColor(seedColor[0], seedColor[1], seedColor[2])
         trace.append(go.Scatter(
             x=list(map(lambda s: s.rawNumber, season)),
             y=list(map(lambda s: s.rating, season)),
+            text=list(map(lambda s: PlotUtils.buildTitle(s), season)),
+            name="Season " + str(season[0].season),
             mode='markers',
             marker=dict(
                 color=PlotUtils.color2PlotlyString(colors[season[0].season - 1], .9)
@@ -56,14 +61,13 @@ def main():
     for season in episodesBySeason:
         xi = list(map(lambda s: s.rawNumber, season))
         y = list(map(lambda s: s.rating, season))
-        print(xi)
-        print(y)
         slope, intercept, r_value, p_value, std_err = stats.linregress(xi, y)
         line = list(map(lambda x: slope * x + intercept, xi))
         trace.append(go.Scatter(
             x=xi,
             y=line,
             mode='lines',
+            name="S" + str(season[0].season) + " best fit",
             marker=dict(
                 color=PlotUtils.color2PlotlyString(colors[season[0].season - 1], .8)
             )))
