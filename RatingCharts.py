@@ -1,11 +1,9 @@
 from Imdb import Imdb
 import PlotUtils
 
-from plotly import __version__
 import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 
-from numpy import arange,array,ones
 from scipy import stats
 
 # todo rest api
@@ -103,7 +101,6 @@ def main():
     title = input("title>").strip()
     print(title)
 
-    # todo get options:
     scale = False
 
     # get episodes:
