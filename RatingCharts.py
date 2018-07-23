@@ -57,13 +57,13 @@ def buildChart(title, episodes, scale):
             )))
 
     # customize graph:
-    if scale:
+    print(scale)
+    if scale == True:
         minY = min(map(lambda x: x.rating, episodes))
         maxY = max(map(lambda x: x.rating, episodes))
     else:
         minY = 1
         maxY = 10
-    # TODO this better
 
     # create the plot layout:
     layout = go.Layout(
@@ -101,14 +101,12 @@ def main():
     title = input("title>").strip()
     print(title)
 
-    scale = False
-
     # get episodes:
     try:
         trueTitle, episodes = getEpisodes(Imdb(), title)
         # build chart
         try:
-            print(buildChart(trueTitle, episodes, scale))
+            print(buildChart(trueTitle, episodes, False))
         except:
             print("Unable to build chart for \"" + title + "\"")
     except:

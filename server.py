@@ -10,14 +10,18 @@ script_js = '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
 
 @app.route('/chart')
 def chart():
+
+
     if request.args.get('search') is None:
         return "Invalid url"
     else:
         search = str(request.args.get('search')).strip()
-
+    
     scale = False
     if request.args.get('scale') is not None:
-        scale = bool(str(request.args.get('scale')).strip())
+        if str(request.args.get('scale')) == 'True':
+            scale = bool(request.args.get('scale'))
+    
 
     try:
         true_title, episodes = RatingCharts.getEpisodes(Imdb(), search)
