@@ -90,7 +90,8 @@ def buildChart(title, episodes, scale):
     )
     fig = go.Figure(data=trace, layout=layout)
     # iplot(fig)
-    plot(fig, filename='output.html')
+    # plot(fig, filename='output.html')
+    return plot(fig, include_plotlyjs=False, output_type='div')
 
 def getEpisodes(site, title):
     id, trueTitle = site.resolveTitle(title)
@@ -110,7 +111,7 @@ def main():
         trueTitle, episodes = getEpisodes(Imdb(), title)
         # build chart
         try:
-            buildChart(trueTitle, episodes, scale)
+            print(buildChart(trueTitle, episodes, scale))
         except:
             print("Unable to build chart for \"" + title + "\"")
     except:
