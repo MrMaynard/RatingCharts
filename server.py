@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import request
+from flask import Flask, render_template, request
 
 import RatingCharts
 from Imdb import Imdb
@@ -8,10 +7,15 @@ app = Flask(__name__)
 
 script_js = '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
 
+@app.route('/')
+@app.route('/home')
+@app.route('/search')
+def home():
+    return render_template('index.html')
+
+
 @app.route('/chart')
 def chart():
-
-
     if request.args.get('search') is None:
         return "Invalid url"
     else:
