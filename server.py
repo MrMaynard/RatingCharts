@@ -5,7 +5,7 @@ from Imdb import Imdb
 
 app = Flask(__name__)
 
-script_js = '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+script_js = ''
 
 @app.route('/')
 @app.route('/home')
@@ -25,7 +25,6 @@ def chart():
     if request.args.get('scale') is not None:
         if str(request.args.get('scale')) == 'True':
             scale = bool(request.args.get('scale'))
-    
 
     try:
         true_title, episodes = RatingCharts.getEpisodes(Imdb(), search)
@@ -35,7 +34,7 @@ def chart():
             return "Unable to build chart for \"" + search + "\""
     except:
         return "Unable to scrape episode data for \"" + search + "\""
-    return script_js + "\n" + chart_div
+    return render_template('chart.html', chart_div = chart_div)
     
 
     
