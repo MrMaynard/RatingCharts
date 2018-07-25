@@ -5,13 +5,14 @@ import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 
 from scipy import stats
+import random 
 
 # todo rest api
 
 
 def buildChart(title, episodes, scale):
     seedColors = [(60, 130, 220), (110, 180, 80), (180, 100, 210)]
-	seedColor = random.choice(seedColors)
+    seedColor = random.choice(seedColors)
 
     # separate into seasons:
     i = 1
