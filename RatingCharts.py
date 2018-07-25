@@ -10,7 +10,8 @@ from scipy import stats
 
 
 def buildChart(title, episodes, scale):
-    seedColor = (60, 130, 220)
+    seedColors = [(60, 130, 220), (110, 180, 80), (180, 100, 210)]
+	seedColor = random.choice(seedColors)
 
     # separate into seasons:
     i = 1
