@@ -5,8 +5,6 @@ from Imdb import Imdb
 
 app = Flask(__name__)
 
-script_js = ''
-
 @app.route('/')
 @app.route('/home')
 @app.route('/search')
