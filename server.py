@@ -34,8 +34,9 @@ def chart():
             return "Unable to build chart for \"" + search + "\""
     except:
         return "Unable to scrape episode data for \"" + search + "\""
-    return '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>\n' + chart_div
-    # return render_template('chart.html', chart_div = chart_div)
+    print(render_template('chart.html', chart_div = chart_div))
+    # return '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>\n' + chart_div
+    return render_template('chart.html', chart_div = chart_div)
     
 
     
