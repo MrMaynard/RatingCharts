@@ -38,7 +38,9 @@ def buildChart(title, episodes, scale):
             mode='markers',
             marker=dict(
                 color=PlotUtils.color2PlotlyString(colors[season[0].season - 1], .9)
-            )))
+            ),
+            showlegend=False
+            ))
 
     # create best fit lines:
     for season in episodesBySeason:
@@ -53,10 +55,11 @@ def buildChart(title, episodes, scale):
             name="S" + str(season[0].season) + " best fit",
             marker=dict(
                 color=PlotUtils.color2PlotlyString(colors[season[0].season - 1], .8)
-            )))
+            ),
+            showlegend=False
+            ))
 
     # customize graph:
-    print(scale)
     if scale == True:
         minY = min(map(lambda x: x.rating, episodes))
         maxY = max(map(lambda x: x.rating, episodes))
@@ -66,11 +69,15 @@ def buildChart(title, episodes, scale):
 
     # create the plot layout:
     layout = go.Layout(
-        title=title,
+        title="<b>" + title + "</b>",
+        titlefont=dict(
+            family='Helvetica',
+            size=36
+        ),
         xaxis=dict(
             title='Episode',
             titlefont=dict(
-                family='Courier New, monospace',
+                family='Helvetica',
                 size=18,
                 color='#7f7f7f'
             )
@@ -79,7 +86,7 @@ def buildChart(title, episodes, scale):
             title='Score',
             range=[minY, maxY],
             titlefont=dict(
-                family='Courier New, monospace',
+                family='Helvetica',
                 size=18,
                 color='#7f7f7f'
             )
