@@ -1,5 +1,13 @@
 .active-cyan-4 input[type=text]:focus:not([readonly]) {
     border: 1px solid #4dd0e1;
     box-shadow: 0 0 0 1px #4dd0e1;
-    width: 75%;
+}
+.mb-20,
+.my-20 {
+  margin-bottom: 20rem !important;
+}
+
+.ml-20,
+.mx-20 {
+  margin-left: 20rem !important;
 }

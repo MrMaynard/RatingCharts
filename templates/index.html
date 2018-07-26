@@ -5,32 +5,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Eric's Rating Charts</title>
+    <title>Rating Charts</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/mdb.min.css" rel="stylesheet">
     <link href="../static/css/style.min.css" rel="stylesheet">
+    <div class="edge-header blue white-text display-1 font-weight-bold">
+        <div class="mb-5 mb-5">
+            Test Text
+        </div>
+    </div>
+    
 </head>
 
 <body>
-    <div style="height: 100vh">
+    <div style="">
         <div class="flex-center flex-column">
-            <h3 class="animated fadeIn mb-3">Find a series</h3>
-            <!-- Search form -->
-            <form class="form-inline ">
-                <input class="form-control form-control-sm mr-3 w-auto" type="text" placeholder="Search" aria-label="Search">
+            <h2 class="animated fadeIn mb-3">Find a series</h2>
+            <form class="animated fadeIn form-inline">
+                <input class="form-control form-control-sm mr-3 w-auto" type="text" id="search" name="search" placeholder="Search" aria-label="Search">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </form>
         </div>
     </div>
-    <!-- /Start your project here-->
-
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="../static/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../static/js/popper.min.js"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+    <script>
+        //from https://stackoverflow.com/questions/5053943/jquery-input-value-to-url-on-submit-question
+        $(document).ready(function() {
+            $('#search').submit( function() {  
+                let searchForm = $('#search').val();
+                let urlLink = "http://localhost:5000/chart/search?scale=False&search=" + searchInput;
+                    window.location = urlLink;
+            return false;
+            });
+        });
+    </script>
 </body>
 
 </html>
