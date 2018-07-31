@@ -32,7 +32,7 @@ def chart():
             return "Unable to build chart for \"" + search + "\""
     except:
         return "Unable to scrape episode data for \"" + search + "\""
-    return render_template('chart.html', chart_div = chart_div)
+    return render_template('chart.html', chart_div = chart_div, title = true_title)
     
 
     

@@ -7222,7 +7222,8 @@ body.scrollable {
 
 .edge-header {
   display: block;
-  height: 278px;
+  height: 100px;
+  /* height: 278px; */
   background-color: #ccc; }
 
 .free-bird {

@@ -11,3 +11,12 @@
 .mx-20 {
   margin-left: 20rem !important;
 }
+
+body {
+    background:#ededed;
+}
+
+.edge-header-md {
+  display: block;
+  height: 200px;
+  background-color: #ccc; }
