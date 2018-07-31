@@ -25,16 +25,33 @@
 					<p class="pb-4">Visualize TV Ratings</p>
 
 					<!--Body-->
-					<form action="?search=">
+					<form action="?">
 						<h5 class="h5-responsive">Find a show</h5>
 						<!-- Basic textbox -->
 						<div class="md-form">
 							<input type="text" id="search" name="search" class="form-control" placeholder="Breaking Bad" autocomplete="nope">
 						</div>
 						
+						<div class="row">
+							<div class="col">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" id="scale">
+									<label class="form-check-label" for="materialUnchecked">Scale Y-Axis</label>
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" id="scale">
+									<label class="form-check-label" for="materialUnchecked">Do other thing</label>
+								</div>
+							</div>
+						</div>
+						<br>
+					
 						<div class="text-xs-left">
 							<button class="btn btn-primary">Chart</button>
 						</div>
+					</form>
 				</div>
 			</div>
 		</div>
