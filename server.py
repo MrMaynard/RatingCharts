@@ -5,16 +5,11 @@ from Imdb import Imdb
 
 app = Flask(__name__)
 
-
-def home():
-    return render_template('index.html')
-
-
 @app.route('/')
 @app.route('/home')
 @app.route('/search')
 @app.route('/chart')
-def chart():
+def home():
     if request.args.get('search') is None:
         search = None
     else:
@@ -34,9 +29,9 @@ def chart():
                 return "Unable to build chart for \"" + search + "\""
         except:
             return "Unable to scrape episode data for \"" + search + "\""
-        return render_template('chart.html', chart_div = chart_div, title = true_title)
+        return render_template('index.html', chart_div = chart_div, title = true_title)
     else:
-        return render_template('chart.html', chart_div = "", title = "Visualize TV Ratings")
+        return render_template('index.html', chart_div = "", title = "Visualize TV Ratings")
     
 
     
