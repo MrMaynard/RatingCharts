@@ -25,11 +25,10 @@
 					<p class="pb-4">Visualize TV Ratings</p>
 
 					<!--Body-->
-					<form action="?">
+					<form onsubmit="return buildChart();">
 						<h5 class="h5-responsive">Find a show</h5>
-						<!-- Basic textbox -->
 						<div class="md-form">
-							<input type="text" id="search" name="search" class="form-control" placeholder="Breaking Bad" autocomplete="nope">
+							<input type="text" id="search" name="search" class="form-control" placeholder="Breaking Bad" autocomplete="off">
 						</div>
 						
 						<div class="row">
@@ -41,8 +40,8 @@
 							</div>
 							<div class="col">
 								<div class="form-check">
-									<input type="checkbox" class="form-check-input" id="scale">
-									<label class="form-check-label" for="materialUnchecked">Do other thing</label>
+									<input type="checkbox" class="form-check-input" id="series">
+									<label class="form-check-label" for="materialUnchecked">Series Trendline</label>
 								</div>
 							</div>
 						</div>
@@ -55,6 +54,15 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			function buildChart() {
+			var prefix = '?',
+				searchTerm = "search=" + $('#search').val() + "&",
+				scale = "scale=" + $('#scale').val() + "&";
+			var newWindow = window.open(prefix + searchTerm + scale);
+			newWindow.focus();
+		}
+		</script>
 	</div>
 	<br>
 	<div class="row">
