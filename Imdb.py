@@ -22,9 +22,9 @@ class Imdb(RatingSite):
         content = WebUtils.getContent(searchUrl)
         resultsStart = content[content.find("result_text"):]
         idStart = resultsStart[resultsStart.find("/title/"):]
-        id = idStart[:idStart.find("?ref")]
+        id = idStart[:idStart.find('"')] # this used to be '?ref' but that broke?
         trueTitle = idStart[idStart.find(">") + 1:idStart.find("<")]
-        return (id, trueTitle)
+        return (id[:100], trueTitle[:100])
 
     def getEpisodes(self, id):
         episodesUrl = Imdb.season_prefix + id + Imdb.season_postfix
@@ -38,8 +38,8 @@ class Imdb(RatingSite):
             workingContent = content[content.find("numberofEpisodes"):]
             while "episodeNumber" in workingContent:
                 workingContent = workingContent[workingContent.find("a href=\"/title/") + 8:]
-                episode = workingContent[:workingContent.find("?ref")]
-                workingContent = workingContent[workingContent.find("?ref"):]
+                episode = workingContent[:workingContent.find('"')] # this used to be '?ref' but that broke?
+                workingContent = workingContent[workingContent.find('"'):] # this used to be '?ref' but that broke?
                 if episode not in map(lambda e: e.id, episodes):
                     # get title:
                     workingContent = workingContent[workingContent.find(Imdb.titleTag) + len(Imdb.titleTag):]

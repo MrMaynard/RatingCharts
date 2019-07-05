@@ -1,4 +1,7 @@
 # Prerequisites:
+
+Python 3
+
 * scipy
 * numpy
 * plotly
