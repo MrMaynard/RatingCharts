@@ -1,4 +1,4 @@
 scipy==1.2.0
 numpy==1.15.4
 plotly==3.10.0
-flask==1.1.0
+flask==2.3.2
